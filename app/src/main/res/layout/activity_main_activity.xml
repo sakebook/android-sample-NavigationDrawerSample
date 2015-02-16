@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/tool_bar"/>
-
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/tool_bar"/>
+
+    </LinearLayout>
 
     <com.sakebook.android.sample.navigationdrawersample.ui.ScrimInsetsFrameLayout
         android:id="@+id/parent_drawer"
