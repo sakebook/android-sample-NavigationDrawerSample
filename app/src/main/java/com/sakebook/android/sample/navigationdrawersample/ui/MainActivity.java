@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -46,6 +47,7 @@ public class MainActivity extends ActionBarActivity
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private ListView mNavigationDrawer;
+    private FrameLayout mParentDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
@@ -72,6 +74,7 @@ public class MainActivity extends ActionBarActivity
 
     private void initLayout() {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mParentDrawerLayout = (FrameLayout)findViewById(R.id.parent_drawer);
         mNavigationDrawer = (ListView)findViewById(R.id.navigation_drawer);
 
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -113,7 +116,7 @@ public class MainActivity extends ActionBarActivity
 
     private List<NavigationItem> makeNavigationItems() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
-        int count = 15;
+        int count = 20;
 
         for (int i = 0; i < count; i++) {
             NavigationItem item = new NavigationItem();
@@ -135,11 +138,9 @@ public class MainActivity extends ActionBarActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("Drawer", "onClick");
                 if (position == 0) {
-                    mDrawerLayout.closeDrawer(mNavigationDrawer);
+                    mDrawerLayout.closeDrawer(mParentDrawerLayout);
                 } else if (position == 1) {
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                } else {
-                    mDrawerLayout.closeDrawers();
                 }
                 MainActivity.this.onDrawerItemSelected(0);
             }
@@ -167,23 +168,24 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+//        setSupportActionBar(mToolbar);
+//        actionBar.setDisplayShowTitleEnabled(true);
+//        mToolbar.setTitle(mTitle);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        if (!mDrawerLayout.isDrawerOpen(mNavigationDrawer)) {
-//            // Only show items in the action bar relevant to this screen
-//            // if the drawer is not showing. Otherwise, let the drawer
-//            // decide what to show in the action bar.
-//            getMenuInflater().inflate(R.menu.main_activity2, menu);
-//            restoreActionBar();
-//            return true;
-//        }
+        if (!mDrawerLayout.isDrawerOpen(mParentDrawerLayout)) {
+            // Only show items in the action bar relevant to this screen
+            // if the drawer is not showing. Otherwise, let the drawer
+            // decide what to show in the action bar.
+            getMenuInflater().inflate(R.menu.main, menu);
+            restoreActionBar();
+            return true;
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
