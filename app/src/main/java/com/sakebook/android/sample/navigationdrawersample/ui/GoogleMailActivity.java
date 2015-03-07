@@ -59,7 +59,7 @@ public class GoogleMailActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_activity);
+        setContentView(R.layout.activity_google_mail);
 
         initLayout();
         // tool bar設定
@@ -243,13 +243,5 @@ public class GoogleMailActivity extends ActionBarActivity
             View rootView = inflater.inflate(R.layout.fragment_main_activity, container, false);
             return rootView;
         }
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
-        }
     }
-
 }
