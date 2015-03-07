@@ -1,6 +1,7 @@
 package com.sakebook.android.sample.navigationdrawersample.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.view.GravityCompat;
@@ -31,8 +32,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity
+public class GoogleMailActivity extends ActionBarActivity
         implements DrawerCallback {
+
+    public static Intent getIntent(Context context) {
+        Intent intent = new Intent(context, GoogleMailActivity.class);
+        return intent;
+    }
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -61,15 +67,6 @@ public class MainActivity extends ActionBarActivity
         setUpHeaderView();
         setUpAdapter();
 
-
-//        mNavigationDrawerFragment = (NavigationDrawerFragment2)
-//                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-//        mTitle = getTitle();
-//
-//        // Set up the drawer.
-//        mNavigationDrawerFragment.setUp(
-//                R.id.navigation_drawer,
-//                (DrawerLayout) findViewById(R.id.drawer_layout));
     }
 
     private void initLayout() {
@@ -141,17 +138,8 @@ public class MainActivity extends ActionBarActivity
                     mDrawerLayout.closeDrawer(mParentDrawerLayout);
                 } else if (position == 1) {
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                } else if (position == 2) {
-                    Intent intent = GooglePhotoActivity.getIntent(MainActivity.this);
-                    startActivity(intent);
-                } else if (position == 3) {
-                    Intent intent = GoogleMovieActivity.getIntent(MainActivity.this);
-                    startActivity(intent);
-                } else if (position == 4) {
-                    Intent intent = GoogleMailActivity.getIntent(MainActivity.this);
-                    startActivity(intent);
                 }
-                MainActivity.this.onDrawerItemSelected(0);
+                GoogleMailActivity.this.onDrawerItemSelected(0);
             }
         });
     }
