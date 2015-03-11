@@ -17,6 +17,8 @@
     </LinearLayout>
 
     <com.sakebook.android.sample.navigationdrawersample.ui.ScrimInsetsFrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:insetForeground="#80000000"
         android:id="@+id/parent_drawer"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"

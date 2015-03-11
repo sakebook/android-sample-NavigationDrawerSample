@@ -93,9 +93,7 @@ public class GoogleMailActivity extends ActionBarActivity
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
         mDrawerLayout.setStatusBarBackgroundColor(Color.parseColor("#ff6600"));
-        mDrawerLayout.setStatusBarBackground(R.drawable.ic_launcher);
     }
 
     private void settingToolbar() {
