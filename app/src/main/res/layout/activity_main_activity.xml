@@ -10,16 +10,19 @@
 
     <Button
         android:id="@+id/button_photo"
+        android:text="Photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/button_movie"
+        android:id="@+id/button_music"
+        android:text="Music"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button_mail"
+        android:text="Mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

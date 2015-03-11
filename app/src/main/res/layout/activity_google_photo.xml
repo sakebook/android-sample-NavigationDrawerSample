@@ -1,29 +1,37 @@
-<android.support.v4.widget.DrawerLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/container"
-        android:background="@android:color/holo_green_light"
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/container"
+            android:background="@android:color/holo_green_light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <include
-        layout="@layout/tool_bar"/>
+        <ListView
+            android:id="@+id/navigation_drawer"
+            android:layout_gravity="start"
+            android:layout_width="@dimen/navigation_drawer_width"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:background="#FFFFFF"/>
 
-    <ListView
-        android:id="@+id/navigation_drawer"
-        android:layout_gravity="start"
-        android:layout_width="@dimen/navigation_drawer_width"
-        android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#FFFFFF"/>
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>
 
-</android.support.v4.widget.DrawerLayout>

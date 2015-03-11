@@ -3,7 +3,6 @@ package com.sakebook.android.sample.navigationdrawersample.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -26,36 +24,34 @@ import com.sakebook.android.sample.navigationdrawersample.model.NavigationItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoogleMovieActivity extends ActionBarActivity
+public class GoogleMusicActivity extends ActionBarActivity
         implements DrawerCallback {
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, GooglePhotoActivity.class);
+        Intent intent = new Intent(context, GoogleMusicActivity.class);
         return intent;
     }
+
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private ListView mNavigationDrawer;
-    private FrameLayout mParentDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google_photo);
+        setContentView(R.layout.activity_google_music);
 
         initLayout();
         // tool bar設定
         settingToolbar();
         setUpHeaderView();
         setUpAdapter();
-
     }
 
     private void initLayout() {
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mParentDrawerLayout = (FrameLayout)findViewById(R.id.parent_drawer);
         mNavigationDrawer = (ListView)findViewById(R.id.navigation_drawer);
 
         mToolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -77,9 +73,8 @@ public class GoogleMovieActivity extends ActionBarActivity
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
         mDrawerLayout.setStatusBarBackgroundColor(Color.parseColor("#ff6600"));
-        mDrawerLayout.setStatusBarBackground(R.drawable.ic_launcher);
+//        mDrawerLayout.setStatusBarBackground(R.drawable.ic_launcher);
     }
 
     private void settingToolbar() {
@@ -118,12 +113,8 @@ public class GoogleMovieActivity extends ActionBarActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("Drawer", "onClick");
-                if (position == 0) {
-                    mDrawerLayout.closeDrawer(mNavigationDrawer);
-                } else if (position == 1) {
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                }
-                GoogleMovieActivity.this.onDrawerItemSelected(0);
+                mDrawerLayout.closeDrawer(mNavigationDrawer);
+                GoogleMusicActivity.this.onDrawerItemSelected(position);
             }
         });
     }

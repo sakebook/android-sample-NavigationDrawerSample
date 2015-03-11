@@ -2,16 +2,16 @@
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="colorPrimary">#ff1188</item>
-        <item name="colorPrimaryDark">#00dd99</item>
-        <item name="colorAccent">#6600aa</item>
+        <item name="colorPrimary">#8BC34A</item>
+        <item name="colorPrimaryDark">#689F38</item>
+        <item name="colorAccent">#FFF59D</item>
     </style>
 
     <style name="Theme.Mail" parent="BaseTheme">
         <item name="windowActionModeOverlay">true</item>
     </style>
 
-    <style name="Theme.Movie" parent="BaseTheme">
+    <style name="Theme.Music" parent="BaseTheme">
     </style>
 
     <style name="Theme.Photo" parent="BaseTheme">
